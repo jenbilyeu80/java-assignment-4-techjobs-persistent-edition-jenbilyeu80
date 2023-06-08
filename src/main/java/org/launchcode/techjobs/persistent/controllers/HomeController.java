@@ -68,8 +68,8 @@ public class HomeController {
             return "add";
         }
 
-        Optional<Employer> employer = employerRepository.findById(employerId);
-        newJob.setEmployer(String.valueOf(employer));
+        //Optional<Employer> employer = employerRepository.findById(employerId);
+        //newJob.setEmployer(String.valueOf(Employer));
 
 
 
