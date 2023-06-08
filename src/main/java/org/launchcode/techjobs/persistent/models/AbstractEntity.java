@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.persistent.models;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
 import javax.annotation.processing.Generated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,6 +18,7 @@ public abstract class AbstractEntity {
     private int id;
 @Size(min = 1, max = 100)
 @NotNull
+
     private String name;
 
     public int getId() {

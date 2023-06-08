@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.persistent.models;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -10,26 +12,30 @@ import java.util.List;
 
 @Entity
 
-public class Employer extends AbstractEntity {
-    @Size(min = 1, max =51)
+public class Employer<list, employer> extends AbstractEntity {
+    @Size(min = 1, max = 51)
     @NotNull
     private String location;
 
-    @OneToMany
+
+
+    @OneToMany(mappedBy = "job")
     @JoinColumn
+    private List<Job> jobs = new ArrayList<>();
 
-private List<Job> job = new ArrayList<>();
-    public Employer(){
+    private String list = String.valueOf(new ArrayList<>());
 
-    };
 
-    public String getLocation() {
-        return location;
+        public String getLocation () {
+            return location;
+        }
+
+        public void setLocation (String location){
+            this.location = location;
+        }
+
+
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-}
 
 

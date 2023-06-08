@@ -1,49 +1,51 @@
 package org.launchcode.techjobs.persistent.models;
 
+import org.springframework.web.bind.annotation.GetMapping;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Entity
-public class Job extends AbstractEntity{
+public class Job extends AbstractEntity {
 
-    @Id
-    @GeneratedValue
-    private int id;
-@Size(min = 1, max =51)
-@NotBlank
+//    @Id
+//    @GeneratedValue
+//    private int id;
+//@Size(min = 1, max =51)
+//@NotBlank
 
 
+    @ManyToOne
 
-@ManyToOne
-    private String employer;
-    private String skills;
+    private Employer employer;
+    private Skill skill;
 
     public Job() {
     }
 
-    public Job(String anEmployer, String someSkills) {
-        super();
-        this.employer = anEmployer;
-        this.skills = someSkills;
-    }
-
-    // Getters and setters.
-
-
-    public String getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
     public void setEmployer(String employer) {
-        this.employer = employer;
+        this.employer = new Employer();
     }
 
-    public String getSkills() {
-        return skills;
+    public Job(String Employer, String Skill) {
+        super();
+        this.employer = new Employer();
+        this.skill = new Skill();
+
     }
 
-    public void setSkills(String skills) {
-        this.skills = skills;
+    public Skill getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skill skill) {
+        this.skill = skill;
     }
 }
+    // Getters and setters.
+
+
+
