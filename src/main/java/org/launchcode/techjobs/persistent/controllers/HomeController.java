@@ -37,7 +37,7 @@ public class HomeController {
     public String displayAddJobForm(Model model) {
         model.addAttribute("title", "Add Job");
         model.addAttribute(new Job());
-        model.addAttribute("employer", employerRepository.findAll());
+        model.addAttribute("employers", employerRepository.findAll());
 
         return "add";
     }
@@ -60,7 +60,9 @@ public class HomeController {
     public String displayViewJob(Model model, @PathVariable int jobId) {
 
         return "view";
-    }@PostMapping("add")
+    }
+
+    @PostMapping("addEmployer")
     public String processAddJobForm(Model model, @RequestParam int employerId, @ModelAttribute @Valid Job newJob,
     Errors errors) {
 
@@ -68,8 +70,7 @@ public class HomeController {
             return "add";
         }
 
-        //Optional<Employer> employer = employerRepository.findById(employerId);
-        //newJob.setEmployer(String.valueOf(Employer));
+//
 
 
 
