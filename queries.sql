@@ -18,4 +18,4 @@
 -- Part 3: Test it with SQL
 DROP TABLE job;
 -- Part
-SELECT
+SELECT * FROM table skills ORDER BY ASC;

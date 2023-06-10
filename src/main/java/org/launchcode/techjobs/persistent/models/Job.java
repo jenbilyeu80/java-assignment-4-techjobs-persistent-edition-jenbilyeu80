@@ -1,10 +1,9 @@
 package org.launchcode.techjobs.persistent.models;
 
-import org.springframework.web.bind.annotation.GetMapping;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Job extends AbstractEntity {
@@ -17,13 +16,13 @@ public class Job extends AbstractEntity {
 
 
     @ManyToOne
-    private Employer employer;
+    private Optional<Employer> employer;
 
 
 
     @OneToOne
     private Skill skill;
-    
+
     @ManyToMany
     private List<Skill>skills = new ArrayList<>();
 
@@ -34,18 +33,18 @@ public class Job extends AbstractEntity {
     }
 
 
-    public Job(Employer employer, Skill skill ) {
+    public Job(Optional<Employer> employer, Skill skill ) {
         super();
         this.employer = employer;
         this.skill = skill;
     }
 
-    public Employer getEmployer() {
+    public Optional<Employer> getEmployer() {
         return employer;
     }
 
 
-    public void setEmployer(Employer employer) {
+    public void setEmployer(Optional<Employer> employer) {
         this.employer = employer;
     }
 
