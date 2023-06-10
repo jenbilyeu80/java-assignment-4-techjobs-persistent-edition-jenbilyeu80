@@ -61,8 +61,6 @@ public class HomeController {
         newJob.setEmployer(employer);
 
 
-
-
             return "redirect:";
         }
     }

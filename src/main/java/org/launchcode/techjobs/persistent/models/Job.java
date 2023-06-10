@@ -33,18 +33,18 @@ public class Job extends AbstractEntity {
     }
 
 
-    public Job(Optional<Employer> employer, Skill skill ) {
+    public Job(Employer employer, Skill skill ) {
         super();
         this.employer = employer;
         this.skill = skill;
     }
 
-    public Optional<Employer> getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
 
-    public void setEmployer(Optional<Employer> employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
