@@ -2,6 +2,7 @@ package org.launchcode.techjobs.persistent.controllers;
 
 import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.Job;
+import org.launchcode.techjobs.persistent.models.Skill;
 import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
 import org.launchcode.techjobs.persistent.models.data.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +43,12 @@ public class HomeController {
         return "add";
     }
 
-
+list<Skill> skillObjs= (List<skill>) skillRepository.findAllById(skills);
+    newJob.setSkills(skillObjs);
 
     @PostMapping("add")
-    public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                       Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
+    public String processAddJobForm(@RequestParam List<Integer>skills, @ModelAttribute @Valid Job newJob,
+                                       Errors errors, Model model, @RequestParam int employerId) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");

@@ -23,6 +23,9 @@ public class Job extends AbstractEntity {
 
     @OneToOne
     private Skill skill;
+    
+    @ManyToMany
+    private List<Skill>skills = new ArrayList<>();
 
 
 
@@ -49,6 +52,9 @@ public class Job extends AbstractEntity {
     public Skill getSkill(){
     return skill;
    }
+
+    public void setSkills(List<Skill> any) {
+    }
 }
 
 
