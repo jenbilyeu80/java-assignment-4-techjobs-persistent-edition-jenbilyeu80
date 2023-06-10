@@ -21,12 +21,13 @@ import java.util.Optional;
  */
 @Controller
 public class HomeController {
-   @Autowired
+    @Autowired
     public EmployerRepository employerRepository;
-   public SkillRepository skillRepository;
+    @Autowired
+    public SkillRepository skillRepository;
 
-   @Autowired
-   public JobRepository jobRepository;
+    @Autowired
+    public JobRepository jobRepository;
 
     @RequestMapping("")
     public String index(Model model) {
@@ -41,43 +42,44 @@ public class HomeController {
         model.addAttribute("title", "Add Job");
         model.addAttribute(new Job());
         model.addAttribute("employers", employerRepository.findAll());
-
+        model.addAttribute("skills",skillRepository.findAll());
         return "add";
     }
 
     @PostMapping("add")
-    public String processAddJobForm(@RequestParam List<Integer>skills, @ModelAttribute @Valid Job newJob,
-                                       Errors errors, Model model, @RequestParam int employerId) {
-        List<Skill> skillObjs= (List<Skill>) skillRepository.findAllById(skills);
-        newJob.setSkills(skillObjs); {
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Job");
-            return "add";
+    public String processAddJobForm(@RequestParam List<Integer> skills, @ModelAttribute @Valid Job newJob,
+                                    Errors errors, Model model, @RequestParam int employerId) {
+        List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
+        newJob.setSkills(skillObjs);
+        {
+            if (errors.hasErrors()) {
+                model.addAttribute("title", "Add Job");
+                return "add";
+            }
+
+            return "redirect:";
         }
-
-        return "redirect:";
     }
+}
+        // @GetMapping("view/{employerId}")
+        //public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
-    @GetMapping("view/{jobId}")
-    public String displayViewJob(Model model, @PathVariable int jobId) {
+        //return "view";
+        // }
 
-        return "view";
-    }
+        //@PostMapping("addEmployer")
+        //public String processAddJobForm(Model model, @RequestParam int employerId, @ModelAttribute @Valid Job newJob,
+        //Errors errors) {
 
-    //@PostMapping("addEmployer")
-    //public String processAddJobForm(Model model, @RequestParam int employerId, @ModelAttribute @Valid Job newJob,
-    //Errors errors) {
-
-       // if (errors.hasErrors()) {
-          //  return "add";
+        // if (errors.hasErrors()) {
+        //  return "add";
         //}
 
 //
 
 
+        // jobRepository.save(newJob);
 
-        jobRepository.save(newJob);
-
-        return "redirect.";
-}
-}
+        //return "redirect.";
+//}
+//}

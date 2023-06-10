@@ -17,4 +17,5 @@
 
 -- Part 3: Test it with SQL
 DROP TABLE job;
--- Part 4: Test it with SQL
+-- Part
+SELECT
