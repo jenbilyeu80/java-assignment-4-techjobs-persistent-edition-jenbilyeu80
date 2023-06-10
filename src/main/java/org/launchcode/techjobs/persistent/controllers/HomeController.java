@@ -5,6 +5,7 @@ import org.launchcode.techjobs.persistent.models.Job;
 import org.launchcode.techjobs.persistent.models.Skill;
 import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
 import org.launchcode.techjobs.persistent.models.data.JobRepository;
+import org.launchcode.techjobs.persistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import java.util.Optional;
 public class HomeController {
    @Autowired
     public EmployerRepository employerRepository;
+   public SkillRepository skillRepository;
 
    @Autowired
    public JobRepository jobRepository;
@@ -43,13 +45,11 @@ public class HomeController {
         return "add";
     }
 
-list<Skill> skillObjs= (List<skill>) skillRepository.findAllById(skills);
-    newJob.setSkills(skillObjs);
-
     @PostMapping("add")
     public String processAddJobForm(@RequestParam List<Integer>skills, @ModelAttribute @Valid Job newJob,
                                        Errors errors, Model model, @RequestParam int employerId) {
-
+        List<Skill> skillObjs= (List<Skill>) skillRepository.findAllById(skills);
+        newJob.setSkills(skillObjs); {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
             return "add";
@@ -64,13 +64,13 @@ list<Skill> skillObjs= (List<skill>) skillRepository.findAllById(skills);
         return "view";
     }
 
-    @PostMapping("addEmployer")
-    public String processAddJobForm(Model model, @RequestParam int employerId, @ModelAttribute @Valid Job newJob,
-    Errors errors) {
+    //@PostMapping("addEmployer")
+    //public String processAddJobForm(Model model, @RequestParam int employerId, @ModelAttribute @Valid Job newJob,
+    //Errors errors) {
 
-        if (errors.hasErrors()) {
-            return "add";
-        }
+       // if (errors.hasErrors()) {
+          //  return "add";
+        //}
 
 //
 
