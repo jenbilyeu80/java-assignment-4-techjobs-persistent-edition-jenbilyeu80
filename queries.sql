@@ -19,6 +19,10 @@
 DROP TABLE job;
 -- Part 4:
 
-"SELECT\\s+\\*\\s+FROM\\s+skill" +
-                "\\s*(LEFT|INNER)?\\s+JOIN\\s+job_skills\\s+
 
+
+SELECT * skills,
+FROM table skills,
+INNER JOIN job_skills ON,
+WHERE job_skills.jobs IS NOT NULL,
+ORDER BY name ASC;
