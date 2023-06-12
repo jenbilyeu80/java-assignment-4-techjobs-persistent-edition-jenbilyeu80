@@ -39,9 +39,9 @@ public class HomeController {
         return "add";
     }
 
-    @PostMapping("add")
-    public String processAddJobForm(@RequestParam List<Integer> skills, @ModelAttribute @Valid Job newJob,
-                                    Errors errors, Model model, @RequestParam int employerId) {
+    @RequestMapping("add")
+    public String processAddJobForm(@ModelAttribute @Valid Job newJob,
+                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
@@ -58,7 +58,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping("")
+    @PostMapping("")
     public String index(Model model) {
 
         model.addAttribute("title", "My Jobs");
