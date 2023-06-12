@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 
-public class Employer<list, employer> extends AbstractEntity {
+public class Employer extends AbstractEntity {
     @Size(min = 1, max = 51)
     @NotNull
     private String location;

@@ -17,5 +17,8 @@
 
 -- Part 3: Test it with SQL
 DROP TABLE job;
--- Part
-SELECT * FROM table skills ORDER BY ASC;
+-- Part 4:
+
+"SELECT\\s+\\*\\s+FROM\\s+skill" +
+                "\\s*(LEFT|INNER)?\\s+JOIN\\s+job_skills\\s+
+

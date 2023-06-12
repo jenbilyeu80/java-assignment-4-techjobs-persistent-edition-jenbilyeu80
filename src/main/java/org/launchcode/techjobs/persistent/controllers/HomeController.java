@@ -60,7 +60,7 @@ public class HomeController {
         Employer employer = employerRepository.findById(employerId).orElse(new Employer());
         newJob.setEmployer(employer);
 
-
+     jobRepository.save(newJob);
             return "redirect:";
         }
     }

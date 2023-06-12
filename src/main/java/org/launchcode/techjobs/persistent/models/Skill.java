@@ -4,39 +4,52 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 
 public class Skill extends AbstractEntity {
     @Size(min=1, max=100)
     private String description;
-    private String jobs;
 
     @ManyToMany(mappedBy = "skills")
-    public void setDescription(String description) {
+    private List<Job> jobs = new ArrayList<>();
+
+    public Skill() {
+
+    }
+
+    public Skill(String description) {
         this.description = description;
     }
 
     public String getDescription() {
         return description;
-
-
     }
 
-    public Skill() {
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Skill(String jobs) {
-        this.jobs = jobs;
-    }
-
-    public String getJobs() {
+    public List<Job> getJobs() {
         return jobs;
     }
 
-    public void setJobs(String jobs) {
+    public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
     }
 }
+
+
+
+
+
+
+
+
+
+
 
